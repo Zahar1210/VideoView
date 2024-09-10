@@ -14,14 +14,13 @@ namespace VideoPlayerAsset.Video
         [SerializeField] private AllInOrderVideoButton _allInOrderVideoButton;
         [SerializeField] private VideoClip _videoClip;
 
-        public VideoPlayer VideoPlayer => GetComponent<VideoPlayer>(); 
+        public VideoPlayer VideoPlayer => GetComponent<VideoPlayer>();
 
         public void OnEnable()
         {
-            Debug.LogWarning("l;f,wrmfklmwlk;rmlkw");
             PrepareClip(_videoClip);
         }
-        
+
         public void PlayVideo()
         {
             VideoPlayer.Play();
@@ -41,10 +40,10 @@ namespace VideoPlayerAsset.Video
         {
             VideoPlayer.isLooping = loop;
         }
-        
+
         public void PrepareClip(VideoClip clip)
         {
-            VideoPlayer.url = null;  // Ensure VideoPlayer is set to play via VideoClip and not URL
+            VideoPlayer.url = null; // Ensure VideoPlayer is set to play via VideoClip and not URL
             VideoPlayer.clip = clip;
 
             VideoPlayer.prepareCompleted += OnVideoPrepared;
@@ -56,28 +55,31 @@ namespace VideoPlayerAsset.Video
         private void OnVideoPrepared(VideoPlayer videoPlayer)
         {
             UnsubscribeVideoEvents(videoPlayer);
-            
+
             var renderTexture = new RenderTexture((int)videoPlayer.width, (int)videoPlayer.height, 24);
             videoPlayer.targetTexture = renderTexture;
             _videoRenderTextureUI.SetRenderTexture(renderTexture);
-            
+
             videoPlayer.Play();
             videoPlayer.Pause();
         }
 
         private void OnVideoError(VideoPlayer vp, string message)
         {
-            Debug.LogError("VideoPlayer Error: " + message);
             UnsubscribeVideoEvents(vp);
         }
 
         public void OnVideoEnd(VideoPlayer videoPlayer)
         {
+            if (VideoPlayer.time == 0)
+                return;
+
             if (_videoControlsUI.InOrder)
             {
                 _allInOrderVideoButton.OnAllInOrderClick(_videoControlsUI, _videoPlayerActivity);
                 return;
             }
+
             _videoPlayerActivity.SetActive(false);
         }
 

@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] private RoomView _startRoomView;
     [SerializeField] private RoomView[] _roomViews;
+    [SerializeField] private CloseViewMode _closeButton;
     public static RoomManager Instance { get; set; }
     public RoomView CurrentRoomView { get; set; }
     
-    private void Start()
+    private void OnEnable()
     {
         Instance = this;
         // Initialize();
@@ -32,6 +34,7 @@ public class RoomManager : MonoBehaviour
                 roomView.SetActiveRoomView(false);
             }
         }
+        _closeButton.Initialize(gameObject.GetComponent<UIDocument>().rootVisualElement);
     }
     
     public void SetCurrentRoom(RoomView roomView)

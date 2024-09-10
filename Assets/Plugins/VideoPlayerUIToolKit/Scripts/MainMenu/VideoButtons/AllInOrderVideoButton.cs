@@ -5,7 +5,8 @@ using VideoPlayerAsset.Video;
 
 public class AllInOrderVideoButton : MonoBehaviour
 {
-    [SerializeField] private Video[] _videoController;
+    [SerializeField] private VideoButton _videoController;
+    [SerializeField] private VideoPlayerActivity _videoPlayerActivity;
     private int _i;
     
     public void Initialize(VisualElement root, VideoControlsUI videoControlsUI, VideoPlayerActivity videoPlayerActivity) 
@@ -17,16 +18,17 @@ public class AllInOrderVideoButton : MonoBehaviour
     public void OnAllInOrderClick(VideoControlsUI videoControlsUI, VideoPlayerActivity videoPlayerActivity)
     {
         videoControlsUI.InOrder = true;
-        if (_videoController.Length > _i)
+        if (_videoController.VideoData.Length > _i)
         {
-            videoControlsUI.ChangeCurrentVideoController(_videoController[_i]);
+            videoControlsUI.ChangeCurrentVideoController(_videoController.VideoData[_i].Video);
             videoPlayerActivity.SetActive(true);
             _i++;
         }
-        else
+        else if(videoControlsUI.InOrder)
         {
-            videoControlsUI.InOrder = false;
             _i = 0;
+            videoControlsUI.InOrder = false;
+            _videoPlayerActivity.SetActive(false);
         }
     }
 }

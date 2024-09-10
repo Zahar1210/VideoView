@@ -9,6 +9,7 @@ using VideoPlayerAsset.Video;
 public class VideoButton : MonoBehaviour
 {
     [SerializeField] private VideoButtonData[] _videoButton;
+    public VideoButtonData[] VideoData => _videoButton; 
     
     public void Initialize(VisualElement root, VideoControlsUI videoControlsUI, VideoPlayerActivity videoPlayerActivity) 
     {
@@ -17,13 +18,14 @@ public class VideoButton : MonoBehaviour
             Button videoButton = root.Q<Button>(buttonInfo.DocumentButtonName);
             if (videoButton != null)
             {
-                videoButton.clicked += () => OnVideoButtonClick(buttonInfo._video, videoControlsUI, videoPlayerActivity);
+                videoButton.clicked += () => OnVideoButtonClick(buttonInfo.Video, videoControlsUI, videoPlayerActivity);
             }
         }
     }
 
     private void OnVideoButtonClick(Video video, VideoControlsUI videoControlsUI, VideoPlayerActivity videoPlayerActivity) 
     {
+        Debug.LogError(video);
         videoControlsUI.ChangeCurrentVideoController(video);
         videoPlayerActivity.SetActive(true);
     }
@@ -31,7 +33,7 @@ public class VideoButton : MonoBehaviour
     [System.Serializable]
     public class VideoButtonData
     {
-        public Video _video;
+        public Video Video;
         public string DocumentButtonName;
     }
 }

@@ -15,7 +15,7 @@ public class MainMenuInitializer : MonoBehaviour
     [SerializeField] private VideoButton _videoButton;
     [SerializeField] private ViewButton _viewButton;
 
-    public void Start()
+    public void OnEnable()
     {
         VisualElement root = gameObject.GetComponent<UIDocument>().rootVisualElement;
         

@@ -8,7 +8,7 @@ public class VideoPlayerActivity : MonoBehaviour
 {
     private VisualElement _root;
     
-    public void Start()
+    public void OnEnable()
     {
         VisualElement root = gameObject.GetComponent<UIDocument>().rootVisualElement;
         _root = root.Q<VisualElement>("VideoPlayer");

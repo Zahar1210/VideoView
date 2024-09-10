@@ -22,7 +22,7 @@ public class CameraView : MonoBehaviour
     [SerializeField, Range(1, 120)]
     private float _maxFov = 90f; // Максимальное значение угла обзора
     
-    void Start()
+    void OnEnable()
     {
         _cam = gameObject.GetComponent<Camera>();
     }

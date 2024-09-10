@@ -152,9 +152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1497020671}
   - {fileID: 178790426}
-  - {fileID: 407783118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &178790425
@@ -186,6 +184,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 407783118}
+  - {fileID: 1497020671}
   - {fileID: 1942312213}
   - {fileID: 1425465755}
   - {fileID: 609469697}
@@ -271,11 +271,11 @@ Transform:
   m_GameObject: {fileID: 407783117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.12443924, y: -6.6443863, z: -7.2623596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 21342739}
+  m_Father: {fileID: 178790426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &407783119
 MonoBehaviour:
@@ -321,11 +321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _videoButton:
-  - _video: {fileID: 1425465756}
+  - Video: {fileID: 1425465756}
     DocumentButtonName: FirstVideoButton
-  - _video: {fileID: 609469698}
+  - Video: {fileID: 1942312214}
     DocumentButtonName: SecondVideoButton
-  - _video: {fileID: 946202874}
+  - Video: {fileID: 946202874}
     DocumentButtonName: ThirdVideoButton
 --- !u!114 &407783122
 MonoBehaviour:
@@ -339,11 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22bd8b6b27ec48be9a52817fccec58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _videoController:
-  - {fileID: 1942312214}
-  - {fileID: 1425465756}
-  - {fileID: 609469698}
-  - {fileID: 946202874}
+  _videoController: {fileID: 407783121}
+  _videoPlayerActivity: {fileID: 1497020674}
 --- !u!114 &407783123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,6 +1300,7 @@ GameObject:
   - component: {fileID: 1402692170}
   - component: {fileID: 1402692173}
   - component: {fileID: 1402692172}
+  - component: {fileID: 1402692174}
   m_Layer: 0
   m_Name: TourRoom
   m_TagString: Untagged
@@ -1345,6 +1343,7 @@ MonoBehaviour:
   - {fileID: 952204975}
   - {fileID: 2035062320}
   - {fileID: 1290580544}
+  _closeButton: {fileID: 1402692174}
 --- !u!114 &1402692173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,6 +1360,20 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 8ddd2ba6bb8e44bc1be51aeaa530b1e5, type: 3}
   m_SortingOrder: 0
+--- !u!114 &1402692174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402692169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99893e400a7c4cbfb6e9f4ba2c1dbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewModeActivity: {fileID: 407783125}
+  _videoModeActivity: {fileID: 407783126}
 --- !u!1 &1425465754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,11 +1522,11 @@ Transform:
   m_GameObject: {fileID: 1497020669}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: -0.12443924, y: -6.6443863, z: 2.7376404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 21342739}
+  m_Father: {fileID: 178790426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1497020672
 MonoBehaviour:
@@ -1531,6 +1544,7 @@ MonoBehaviour:
   _loopNoLoopButton: {fileID: 1497020678}
   _soundButton: {fileID: 1497020677}
   _stopPlayButton: {fileID: 1497020676}
+  _videoPlayerActivity: {fileID: 1497020674}
   _videoSlider: {fileID: 1497020675}
 --- !u!114 &1497020674
 MonoBehaviour:
