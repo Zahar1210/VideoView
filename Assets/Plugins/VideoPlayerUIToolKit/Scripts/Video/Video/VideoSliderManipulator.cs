@@ -10,12 +10,13 @@ namespace VideoPlayerAsset.UI
         private bool _scrubbed;
 
         private VisualElement Root { get; set; }
-        
+        private VisualElement SliderArea => Root.Q<VisualElement>("SliderArea"); 
         private readonly VideoControlsUI _videoController;
 
         public VideoSliderManipulator(VideoControlsUI videoController, VisualElement root)
         {
             Root = root;
+            
             _videoController = videoController;
 
             RegisterCallbacksOnTarget();
@@ -23,13 +24,13 @@ namespace VideoPlayerAsset.UI
 
         protected sealed override void RegisterCallbacksOnTarget()
         {
-            Root.Q("unity-drag-container").RegisterCallback<PointerUpEvent>(PointerUp);       // PointerUp is consumed by slider so it has to be registered here.
+            SliderArea.Q("unity-drag-container").RegisterCallback<PointerUpEvent>(PointerUp);       // PointerUp is consumed by slider so it has to be registered here.
             Root.RegisterCallback<ChangeEvent<float>>(SliderValueChanged);
         }
 
         protected override void UnregisterCallbacksFromTarget()
         {
-            Root.Q("unity-drag-container").UnregisterCallback<PointerUpEvent>(PointerUp);
+            SliderArea.Q("unity-drag-container").UnregisterCallback<PointerUpEvent>(PointerUp);
             Root.UnregisterCallback<ChangeEvent<float>>(SliderValueChanged);
         }
         

@@ -26,6 +26,11 @@ namespace VideoPlayerAsset.Video
             VideoPlayer.Play();
         }
 
+        public void SetTimeVideo(float time)
+        {
+            VideoPlayer.Play();
+        }
+        
         public void StopVideo()
         {
             VideoPlayer.Stop();

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Video;
@@ -13,7 +14,7 @@ namespace VideoPlayerAsset.UI
         
         [SerializeField] private Video.Video _startVideo;
         [SerializeField] private LoopNoLoopButton _loopNoLoopButton;
-        [SerializeField] private MuteSoundButton _soundButton;
+        [SerializeField] private SoundButton _soundButton;
         [SerializeField] private StopPlayButton _stopPlayButton;
         [SerializeField] private VideoPlayerActivity _videoPlayerActivity;
         [SerializeField] private VideoSlider _videoSlider;
@@ -29,6 +30,11 @@ namespace VideoPlayerAsset.UI
         }
 
         private void Start()
+        {
+            OnStart();
+        }
+
+        public void OnStart()
         {
             ChangeCurrentVideoController(StartVideo);
             _videoPlayerActivity.SetActive(true);

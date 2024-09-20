@@ -15,3 +15,13 @@
 .button-control-video-expand {
     position: relative;
 }
+
+.nonActive {
+    opacity: 0;
+    transition-duration: 0.15s;
+}
+
+.active {
+    opacity: 1;
+    transition-duration: 0.15s;
+}
