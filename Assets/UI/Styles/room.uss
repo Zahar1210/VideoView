@@ -3,6 +3,34 @@
     background-color: rgba(0, 0, 0, 0);
 }
 
+.parentElement {
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    visibility: visible;
+}
+
+.text {
+    top: -45px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    text-shadow: 1.9px 0.6px 6.1px rgb(0, 0, 0);
+    font-size: 25px;
+}
+
 .hintPoint {
     flex-shrink: 0;
     flex-grow: 0;
@@ -24,14 +52,7 @@
     position: absolute;
 }
 
-.parentElement {
-    background-color: rgba(0, 0, 0, 0);
-    border-left-color: rgba(0, 0, 0, 0);
-    border-right-color: rgba(0, 0, 0, 0);
-    border-top-color: rgba(0, 0, 0, 0);
-    border-bottom-color: rgba(0, 0, 0, 0);
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    visibility: visible;
+.turnBlackout {
+    opacity: 1;
+    transition-duration: 0.5s;
 }

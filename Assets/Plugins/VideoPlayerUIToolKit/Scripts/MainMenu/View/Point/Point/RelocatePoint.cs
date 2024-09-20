@@ -1,8 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
 
 public class RelocatePoint : Point
 {
@@ -53,6 +50,14 @@ public class RelocatePoint : Point
         point.AddToClassList("parentElement");
         PointElement.MainPoint = point;
 
+        Label label = new Label
+        {
+            text = PointText
+        };
+        label.AddToClassList("text");
+        label.AddToClassList("nonActive");
+        point.Add(label);
+        
         Debug.LogError(PointElement.AnimationParamsArray.Length);
         foreach (var pointAnimation in PointElement.AnimationParamsArray)
         {
@@ -69,7 +74,16 @@ public class RelocatePoint : Point
         }
         
         UIDocument.rootVisualElement.Add(PointElement.MainPoint);
+        
         PointElement.MainPoint.clicked += OnClick;
+        PointElement.MainPoint.RegisterCallback<MouseEnterEvent>(evt => OnEnter(label, "active", "nonActive"));
+        PointElement.MainPoint.RegisterCallback<MouseLeaveEvent>(evt => OnEnter(label, "nonActive", "active"));
+    }
+
+    public void OnEnter(Label label, string newStyle, string pastStyle)
+    {
+        label.AddToClassList(newStyle);
+        label.RemoveFromClassList(pastStyle);
     }
     
     public void OnClick()

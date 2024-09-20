@@ -272,6 +272,7 @@ MonoBehaviour:
       MaxOpacity: 1
       Speed: 3
   _uiDocument: {fileID: 1402692173}
+  _pointText: Room_3
   _targetRoomView: {fileID: 1290580544}
 --- !u!1 &407783117
 GameObject:
@@ -611,6 +612,7 @@ MonoBehaviour:
       MaxOpacity: 1
       Speed: 3
   _uiDocument: {fileID: 1402692173}
+  _pointText: Room_1
   _targetRoomView: {fileID: 952204975}
 --- !u!1 &609469696
 GameObject:
@@ -1090,6 +1092,7 @@ MonoBehaviour:
       MaxOpacity: 1
       Speed: 2
   _uiDocument: {fileID: 1402692173}
+  _pointText: Room_3
   _targetRoomView: {fileID: 1290580544}
 --- !u!1 &1024621861
 GameObject:
@@ -1487,6 +1490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507d590e13d1a41928836931f93f2399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiDocument: {fileID: 1402692173}
   _startRoomView: {fileID: 1290580544}
   _roomViews:
   - {fileID: 952204975}
@@ -1842,6 +1846,7 @@ MonoBehaviour:
       MaxOpacity: 1
       Speed: 3
   _uiDocument: {fileID: 1402692173}
+  _pointText: Room_2
   _targetRoomView: {fileID: 2035062320}
 --- !u!1 &1751861663
 GameObject:
@@ -1889,7 +1894,7 @@ GameObject:
   m_Layer: 0
   m_Name: HintPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1945,6 +1950,7 @@ MonoBehaviour:
       MaxOpacity: 1
       Speed: 3
   _uiDocument: {fileID: 1402692173}
+  _pointText: Panel
   _infoPanel: {fileID: 745157371}
   _infoPanelActivity: {fileID: 745157372}
   _panelName: Room1_InfoPanel

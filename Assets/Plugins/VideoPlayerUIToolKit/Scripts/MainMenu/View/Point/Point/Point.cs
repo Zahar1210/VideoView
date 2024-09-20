@@ -7,8 +7,10 @@ public abstract class Point : MonoBehaviour
 {
     [SerializeField] private ElementPoint _elementPoints;
     [SerializeField] private UIDocument _uiDocument;
+    [SerializeField] private string _pointText;
     public UIDocument UIDocument => _uiDocument;
     public ElementPoint PointElement => _elementPoints;
+    public string PointText => _pointText;
 
     public abstract void SetActive(bool isActive);
     public abstract void Animation(AnimationParams animationParams);

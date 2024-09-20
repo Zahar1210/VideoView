@@ -50,6 +50,15 @@ public class HintPoint : Point
             }
         };
         point.AddToClassList("parentElement");
+        
+        Label label = new Label
+        {
+            text = PointText
+        };
+        label.AddToClassList("text");
+        label.AddToClassList("nonActive");
+        point.Add(label);
+        
         PointElement.MainPoint = point;
 
         Debug.LogError(PointElement.AnimationParamsArray.Length);
@@ -70,6 +79,14 @@ public class HintPoint : Point
         
         UIDocument.rootVisualElement.Add(PointElement.MainPoint);
         PointElement.MainPoint.clicked += OnClick;
+        PointElement.MainPoint.RegisterCallback<MouseEnterEvent>(evt => OnEnter(label, "active", "nonActive"));
+        PointElement.MainPoint.RegisterCallback<MouseLeaveEvent>(evt => OnEnter(label, "nonActive", "active"));
+    }
+    
+    public void OnEnter(Label label, string newStyle, string pastStyle)
+    {
+        label.AddToClassList(newStyle);
+        label.RemoveFromClassList(pastStyle);
     }
     
     public void OnClick()

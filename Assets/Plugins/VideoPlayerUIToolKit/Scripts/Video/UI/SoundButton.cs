@@ -59,6 +59,7 @@ public class SoundButton : MonoBehaviour
         _soundButton.style.display = DisplayStyle.Flex;
         
         _videoControlsUI.CurrentVideo.Mute(false);
+        // _slider.value = _videoControlsUI.CurrentVideo.VideoPlayer.GetAudioSampleRate(0);
     }
 
     private void ButtonMute()
@@ -67,6 +68,7 @@ public class SoundButton : MonoBehaviour
         _soundButton.style.display = DisplayStyle.None;
         
         _videoControlsUI.CurrentVideo.Mute(true);
+        _slider.value = _slider.lowValue;
     }
 
     private void SetActiveSoundSlider(string newStyle, string pastStyle, VisualElement element)
