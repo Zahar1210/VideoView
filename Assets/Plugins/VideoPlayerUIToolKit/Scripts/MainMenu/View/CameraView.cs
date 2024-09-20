@@ -1,27 +1,28 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CameraView : MonoBehaviour
 {
-    [SerializeField] private UIDocument _roomUIDocument;
+    public Camera _cam;
     public bool _isDragging = false;
+    [SerializeField] private UIDocument _roomUIDocument;
+    [SerializeField] private Vector3 _offset = new Vector3(0, 5, -10);  // Смещение камеры от объекта
+    [SerializeField] private float rotateSpeed = 2f;  // Скорость поворота камеры
+    [SerializeField] private float _zoomTargetFOV;
+    [SerializeField] private float _zoomSimpleFOV;
+    [SerializeField, Range(1, 120)] private float _zoomSpeed = 10f; // Скорость изменения угла обзора
+    [SerializeField, Range(1, 120)] private float _minFov = 15f; // Минимальное значение угла обзора
+    [SerializeField, Range(1, 120)] private float _maxFov = 90f; // Максимальное значение угла обзора
     
+    private Coroutine cameraMoveCoroutine;  // Ссылка на корутину, чтобы контролировать ее выполнение
     private float _startMouseX;
     private float _startMouseY;
     
-    public Camera _cam;
 
-    [SerializeField, Range(1, 120)]
-    private float _zoomSpeed = 10f; // Скорость изменения угла обзора
-
-    [SerializeField, Range(1, 120)]
-    private float _minFov = 15f; // Минимальное значение угла обзора
-
-    [SerializeField, Range(1, 120)]
-    private float _maxFov = 90f; // Максимальное значение угла обзора
-    
     void OnEnable()
     {
         _cam = gameObject.GetComponent<Camera>();
@@ -95,5 +96,42 @@ public class CameraView : MonoBehaviour
             _startMouseX = endMouseX;
             _startMouseY = endMouseY;
         }
+    }
+    
+    // Корутину для перемещения и поворота камеры
+    public async Task MoveCameraToObject(Transform targetObject)
+    {
+        Vector3 targetPosition = targetObject.transform.position + _offset;
+    
+        float initialFOV = _cam.fieldOfView;
+
+        Quaternion initialRotation = _cam.transform.rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(new Vector3(targetObject.transform.position.x, _cam.transform.position.y, targetObject.transform.position.z) - _cam.transform.position);
+        
+        while (Quaternion.Angle(_cam.transform.rotation, targetRotation) > 1f)
+        {
+            _cam.transform.rotation = Quaternion.Slerp(_cam.transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
+        
+            // Рассчитываем процент завершённости поворота
+            float rotationProgress = Quaternion.Angle(initialRotation, _cam.transform.rotation) / Quaternion.Angle(initialRotation, targetRotation);
+        
+            // Используем процент для линейного изменения угла обзора (зум)
+            _cam.fieldOfView = Mathf.Lerp(initialFOV, _zoomTargetFOV, rotationProgress);
+
+            if (Quaternion.Angle(_cam.transform.rotation, targetRotation) <= 1f)
+            {
+                _cam.transform.position = targetPosition;
+                _cam.transform.rotation = targetRotation;
+                return;
+            }
+        
+            await Task.Yield();
+        }
+    }
+
+    public void AfterZoom()
+    {
+        _cam.transform.position = Vector3.zero;
+        _cam.fieldOfView = _zoomSimpleFOV;
     }
 }

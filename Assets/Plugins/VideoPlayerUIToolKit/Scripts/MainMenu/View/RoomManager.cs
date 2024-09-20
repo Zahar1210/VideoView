@@ -8,7 +8,8 @@ public class RoomManager : MonoBehaviour
     public static RoomManager Instance { get; set; }
     public VisualElement Blackout => _root.Q<VisualElement>("BlackoutEffect");
     public RoomView CurrentRoomView { get; set; }
-    
+
+    [SerializeField] private CameraView _cameraView;
     [SerializeField] private UIDocument _uiDocument;
     [SerializeField] private RoomView _startRoomView;
     [SerializeField] private RoomView[] _roomViews;
@@ -43,8 +44,9 @@ public class RoomManager : MonoBehaviour
         _closeButton.Initialize(gameObject.GetComponent<UIDocument>().rootVisualElement);
     }
     
-    public void SetCurrentRoom(RoomView roomView)
+    public async void SetCurrentRoom(RoomView roomView, Transform targetObject)
     {
+        await _cameraView.MoveCameraToObject(targetObject);
         StartCoroutine(BlackoutEffect(roomView));
     }
 
@@ -62,5 +64,7 @@ public class RoomManager : MonoBehaviour
         CurrentRoomView?.SetActiveRoomView(true);
         Blackout.RemoveFromClassList("turnBlackout");
         Blackout.AddToClassList("returnBlackout");
+        
+        _cameraView.AfterZoom();
     }
 }

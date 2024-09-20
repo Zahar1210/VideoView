@@ -257,6 +257,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
@@ -264,6 +265,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
@@ -271,6 +273,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 3
+      ColorStyle: colorPoint_2
   _uiDocument: {fileID: 1402692173}
   _pointText: Room_3
   _targetRoomView: {fileID: 1290580544}
@@ -538,9 +541,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b301c47fde9498fb9b890f0cf72aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomUIDocument: {fileID: 1402692173}
-  _isDragging: 0
   _cam: {fileID: 519420031}
+  _isDragging: 0
+  _roomUIDocument: {fileID: 1402692173}
+  _offset: {x: 0, y: 0, z: 0}
+  rotateSpeed: 4.25
+  _zoomTargetFOV: 17
+  _zoomSimpleFOV: 60
   _zoomSpeed: 10
   _minFov: 15
   _maxFov: 90
@@ -597,6 +604,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
@@ -604,6 +612,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
@@ -611,6 +620,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 3
+      ColorStyle: colorPoint_2
   _uiDocument: {fileID: 1402692173}
   _pointText: Room_1
   _targetRoomView: {fileID: 952204975}
@@ -1077,20 +1087,23 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
-      MinThickness: 0.3
+      MinThickness: 0.4
       MaxThickness: 4
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
-      MaxThickness: 4
+      MaxThickness: 5
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_2
   _uiDocument: {fileID: 1402692173}
   _pointText: Room_3
   _targetRoomView: {fileID: 1290580544}
@@ -1490,6 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507d590e13d1a41928836931f93f2399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraView: {fileID: 519420033}
   _uiDocument: {fileID: 1402692173}
   _startRoomView: {fileID: 1290580544}
   _roomViews:
@@ -1831,6 +1845,7 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
@@ -1838,13 +1853,15 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
-      MaxThickness: 4
+      MaxThickness: 5
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 3
+      ColorStyle: colorPoint_2
   _uiDocument: {fileID: 1402692173}
   _pointText: Room_2
   _targetRoomView: {fileID: 2035062320}
@@ -1931,10 +1948,11 @@ MonoBehaviour:
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
-      MaxThickness: 4
+      MaxThickness: 5
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
       MinThickness: 0.3
@@ -1942,13 +1960,15 @@ MonoBehaviour:
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 2.1
+      ColorStyle: colorPoint_1
     - StartIndex: 0
       TargetIndex: 1
-      MinThickness: 0.3
+      MinThickness: 0.5
       MaxThickness: 4
       MinOpacity: 0
       MaxOpacity: 1
       Speed: 3
+      ColorStyle: colorPoint_2
   _uiDocument: {fileID: 1402692173}
   _pointText: Panel
   _infoPanel: {fileID: 745157371}

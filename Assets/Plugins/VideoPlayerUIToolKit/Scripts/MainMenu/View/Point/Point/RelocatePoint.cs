@@ -66,6 +66,7 @@ public class RelocatePoint : Point
                 pickingMode = PickingMode.Ignore
             };
             pointElement.AddToClassList("hintPoint");
+            pointElement.AddToClassList(pointAnimation.ColorStyle);
             Debug.Log(pointElement);
             pointAnimation.Point = pointElement;
             PointElement.MainPoint.Add(pointElement);
@@ -88,7 +89,7 @@ public class RelocatePoint : Point
     
     public void OnClick()
     {
-        RoomManager.Instance.SetCurrentRoom(_targetRoomView);
+        RoomManager.Instance.SetCurrentRoom(_targetRoomView, transform);
     }
 
     public override void SetActive(bool isActive)

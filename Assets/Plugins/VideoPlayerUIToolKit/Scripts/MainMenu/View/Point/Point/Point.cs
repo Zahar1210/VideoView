@@ -34,8 +34,10 @@ public abstract class Point : MonoBehaviour
         [Space]
         public float MinOpacity;
         public float MaxOpacity;
+        [Space] 
+        public float Speed;
         [Space]
-        public float Speed; 
+        public string ColorStyle;
         public VisualElement Point { get; set; }
         public float AnimationIndex { get; set; }
     }
